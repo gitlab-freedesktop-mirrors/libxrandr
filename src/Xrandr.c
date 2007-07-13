@@ -129,12 +129,18 @@ static Bool XRRWireToEvent(Display *dpy, XEvent *event, xEvent *wire)
 	    aevent->state = awire->state;
 	    return True;
 	}
-
-	    break;
+	case RRNotify_OutputDPMSChange: {
+	    XRROutputDPMSChangeNotifyEvent *aevent =
+	      (XRROutputDPMSChangeNotifyEvent *) event;
+	    xRROutputDPMSChangeNotifyEvent *awire =
+	      (xRROutputDPMSChangeNotifyEvent *) wire;
+	    aevent->output = awire->output;
+	    aevent->level = awire->level;
+	    return True;
 	}
-      }
+	} /* RRNotify subtype switch */
+      } /* RRNotify */
     }
-
     return False;
 }
 
@@ -202,6 +208,13 @@ static Status XRREventToWire(Display *dpy, XEvent *event, xEvent *wire)
 	    awire->atom = aevent->property;
 	    awire->timestamp = aevent->timestamp;
 	    awire->state = aevent->state;
+	    return True;
+	}
+	case RRNotify_OutputDPMSChange: {
+	    xRROutputDPMSChangeNotifyEvent *awire = (xRROutputDPMSChangeNotifyEvent *) wire;
+	    XRROutputDPMSChangeNotifyEvent *aevent = (XRROutputDPMSChangeNotifyEvent *) event;
+	    awire->output = aevent->output;
+	    awire->level = aevent->level;
 	    return True;
 	}
 	}

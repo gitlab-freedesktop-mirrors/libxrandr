@@ -116,6 +116,17 @@ typedef struct {
     int state;			/* NewValue, Deleted */
 } XRROutputPropertyNotifyEvent;
 
+typedef struct {
+    int type;			/* event base */
+    unsigned long serial;	/* # of last request processed by server */
+    Bool send_event;		/* true if this came from a SendEvent request */
+    Display *display;		/* Display the event was read from */
+    Window window;		/* window which selected for this event */
+    int subtype;		/* RRNotify_OutputDPMSChange */
+    RROutput output;		/* affected output */
+    CARD16 level;		/* New DPMS level */
+} XRROutputDPMSChangeNotifyEvent;
+
 /* internal representation is private to the library */
 typedef struct _XRRScreenConfiguration XRRScreenConfiguration;	
 
