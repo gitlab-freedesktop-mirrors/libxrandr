@@ -53,13 +53,7 @@ RANDR_VERSION=[`echo $VERSION | sed 's/^\([0-9][0-9]*\.[0-9][0-9]*\).*$/\1/'`]
 AC_SUBST(RANDR_VERSION)
 
 # Obtain compiler/linker options for depedencies
-PKG_CHECK_MODULES(RANDR, x11 randrproto >= $RANDR_VERSION xext xextproto xrender renderproto)
-
-# Check for _XEatDataWords function that may be patched into older Xlib release
-SAVE_LIBS="$LIBS"
-LIBS="$RANDR_LIBS"
-AC_CHECK_FUNCS([_XEatDataWords])
-LIBS="$SAVE_LIBS"
+PKG_CHECK_MODULES(RANDR, [x11 >= 1.6] randrproto >= $RANDR_VERSION xext xextproto xrender renderproto)
 
 AC_CONFIG_FILES([Makefile
 		src/Makefile
