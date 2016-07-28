@@ -84,8 +84,8 @@ XRRGetMonitors(Display *dpy, Window window, Bool get_active, int *nmonitors)
 	mon = Xmalloc (rbytes);
 
 	if (buf == NULL || mon == NULL) {
-	    if (buf != NULL) Xfree(buf);
-	    if (mon != NULL) Xfree(mon);
+	    Xfree(buf);
+	    Xfree(mon);
 	    _XEatDataWords (dpy, rep.length);
 	    UnlockDisplay (dpy);
 	    SyncHandle ();
@@ -194,7 +194,6 @@ XRRAllocateMonitor(Display *dpy, int noutput)
 void
 XRRFreeMonitors(XRRMonitorInfo *monitors)
 {
-    if (monitors)
-	Xfree(monitors);
+    Xfree(monitors);
 }
 
