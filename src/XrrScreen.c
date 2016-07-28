@@ -127,8 +127,8 @@ doGetScreenResources (Display *dpy, Window window, int poll)
     xrsr = (XRRScreenResources *) Xmalloc(rbytes);
     wire_names = (char *) Xmalloc (rep.nbytesNames);
     if (xrsr == NULL || wire_names == NULL) {
-	if (xrsr) Xfree (xrsr);
-	if (wire_names) Xfree (wire_names);
+	Xfree (xrsr);
+	Xfree (wire_names);
 	_XEatDataWords (dpy, rep.length);
 	UnlockDisplay (dpy);
 	SyncHandle ();
