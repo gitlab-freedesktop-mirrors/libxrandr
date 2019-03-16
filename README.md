@@ -1,6 +1,9 @@
 libXrandr - X Resize, Rotate and Reflection extension library
 --------------------------------------------------------------
 
+libXrandr is the libX11-based library for the X Resize, Rotate and
+Reflection (RandR) extension.
+
 All questions regarding this software should be directed at the
 Xorg mailing list:
 
