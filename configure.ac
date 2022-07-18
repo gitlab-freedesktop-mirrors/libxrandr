@@ -52,7 +52,7 @@ XORG_CHECK_MALLOC_ZERO
 RANDR_VERSION=[`echo $VERSION | sed 's/^\([0-9][0-9]*\.[0-9][0-9]*\).*$/\1/'`]
 AC_SUBST(RANDR_VERSION)
 
-# Obtain compiler/linker options for depedencies
+# Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(RANDR, [x11 >= 1.6] randrproto >= $RANDR_VERSION xext xextproto xrender renderproto)
 
 AC_CONFIG_FILES([Makefile
