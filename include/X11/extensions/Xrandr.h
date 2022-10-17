@@ -233,7 +233,6 @@ Time XRRTimes (Display *dpy, int screen, Time *config_timestamp);
 
 /* Version 1.2 additions */
 
-/* despite returning a Status, this returns 1 for success */
 Status
 XRRGetScreenSizeRange (Display *dpy, Window window,
 		       int *minWidth, int *minHeight,
