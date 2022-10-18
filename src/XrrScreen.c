@@ -47,7 +47,6 @@ doGetScreenResources (Display *dpy, Window window, int poll)
     _XRRVersionState		async_state;
     int				nbytes, nbytesRead, rbytes;
     int				i;
-    xRRQueryVersionReq		*vreq;
     XRRScreenResources		*xrsr;
     char			*names;
     char			*wire_names, *wire_name;
@@ -61,6 +60,8 @@ doGetScreenResources (Display *dpy, Window window, int poll)
 
     if (xrri->major_version == -1)
     {
+	xRRQueryVersionReq		*vreq;
+
 	/* hide a version query in the request */
 	GetReq (RRQueryVersion, vreq);
 	vreq->reqType = info->codes->major_opcode;
