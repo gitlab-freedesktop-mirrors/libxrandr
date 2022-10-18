@@ -127,8 +127,8 @@ doGetScreenResources (Display *dpy, Window window, int poll)
 		  rep.nModes * sizeof (XRRModeInfo) +
 		  rep.nbytesNames + rep.nModes);    /* '\0' terminate names */
 
-	xrsr = (XRRScreenResources *) Xmalloc(rbytes);
-	wire_names = (char *) Xmalloc (rep.nbytesNames);
+	xrsr = Xmalloc(rbytes);
+	wire_names = Xmalloc (rep.nbytesNames);
     } else {
 	nbytes = 0;
 	nbytesRead = 0;

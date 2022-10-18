@@ -60,7 +60,7 @@ XRRListProviderProperties (Display *dpy, RRProvider provider, int *nprop)
 	size_t rbytes = rep.nAtoms * sizeof (Atom);
 	size_t nbytes = rep.nAtoms << 2;
 
-	props = (Atom *) Xmalloc (rbytes);
+	props = Xmalloc (rbytes);
 	if (props == NULL) {
 	    _XEatDataWords (dpy, rep.length);
 	    UnlockDisplay (dpy);

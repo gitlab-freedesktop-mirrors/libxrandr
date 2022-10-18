@@ -75,7 +75,7 @@ XRRGetCrtcInfo (Display *dpy, XRRScreenResources *resources, RRCrtc crtc)
 		  rep.nOutput * sizeof (RROutput) +
 		  rep.nPossibleOutput * sizeof (RROutput));
 
-	xci = (XRRCrtcInfo *) Xmalloc(rbytes);
+	xci = Xmalloc(rbytes);
     }
     else
     {
@@ -530,7 +530,7 @@ XRRGetPanning (Display *dpy, XRRScreenResources *resources, RRCrtc crtc)
 	return NULL;
     }
 
-    if (! (xp = (XRRPanning *) Xmalloc(sizeof(XRRPanning))) ) {
+    if (! (xp = Xmalloc(sizeof(XRRPanning))) ) {
 	_XEatData (dpy, sizeof(XRRPanning));
 	UnlockDisplay (dpy);
 	SyncHandle ();

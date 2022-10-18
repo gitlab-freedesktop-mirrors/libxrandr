@@ -283,7 +283,7 @@ static XRRScreenConfiguration *_XRRGetScreenInfo (Display *dpy,
 	  (rep.nSizes * sizeof (XRRScreenSize) +
 	   rep.nrateEnts * sizeof (int));
 
-	scp = (struct _XRRScreenConfiguration *) Xmalloc(rbytes);
+	scp = Xmalloc(rbytes);
     } else {
 	nbytes = 0;
 	nbytesRead = 0;
